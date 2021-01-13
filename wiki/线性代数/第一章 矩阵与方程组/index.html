@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>第一章 矩阵与方程组 | Maktub_Wiki</title>
+    
+    
+        <meta name="keywords" content="第一章 矩阵与方程组" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1.1 线性方程组等价方程组 定义：若两个含有相同变量的方程组具有相同的解集，则称它们是等价的 判定:1) 交换任意两个方程的顺序2) 任一方程两边同乘一个非零的实数3) 任一方程的倍数加到另外一个方程上  n X n方程组 定义：若方程组中，第k个方程的前k-1个变量的系数均为零，且$ x_{k}(k&#x3D;1, \cdot \cdot \cdot ), n) $的系数不为零，则称该方程组为严格三角形">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一章 矩阵与方程组">
+<meta property="og:url" content="https://wiki.maktub.cn/wiki/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E6%96%B9%E7%A8%8B%E7%BB%84/index.html">
+<meta property="og:site_name" content="Maktub_Wiki">
+<meta property="og:description" content="1.1 线性方程组等价方程组 定义：若两个含有相同变量的方程组具有相同的解集，则称它们是等价的 判定:1) 交换任意两个方程的顺序2) 任一方程两边同乘一个非零的实数3) 任一方程的倍数加到另外一个方程上  n X n方程组 定义：若方程组中，第k个方程的前k-1个变量的系数均为零，且$ x_{k}(k&#x3D;1, \cdot \cdot \cdot ), n) $的系数不为零，则称该方程组为严格三角形">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-25T13:37:16.000Z">
+<meta property="article:modified_time" content="2021-01-13T06:55:04.539Z">
+<meta property="article:author" content="Maktub_小明">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Maktub_Wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <!-- <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-GKXMSDD1W9', 'auto');
+ga('send', 'pageview');
+
+</script> -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXMSDD1W9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GKXMSDD1W9');
+</script>
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Maktub_Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            线性代数
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/wiki/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E6%96%B9%E7%A8%8B%E7%BB%84/">第一章 矩阵与方程组</a></li>  <li class="file"><a href="/wiki/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E8%A1%8C%E5%88%97%E5%BC%8F/">第二章 行列式</a></li>  <li class="file"><a href="/wiki/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4/">第三章 向量空间</a></li>  <li class="file"><a href="/wiki/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/">第四章 线性变换</a></li>  <li class="file"><a href="/wiki/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E6%AD%A3%E4%BA%A4%E6%80%A7/">第五章 正交性</a></li>  <li class="file"><a href="/wiki/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E7%89%B9%E5%BE%81%E5%80%BC/">第六章 特征值</a></li>  <li class="file"><a href="/wiki/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E6%95%B0%E5%80%BC%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">第七章 数值线性代数</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title"><span>归档</span></h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-线性代数/第一章 矩阵与方程组" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%9F%A9%E9%98%B5%E4%B8%8E%E6%96%B9%E7%A8%8B%E7%BB%84/">
+            <time datetime="2020-10-25T13:37:16.000Z" itemprop="datePublished">2020-10-25</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            第一章 矩阵与方程组
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h1 id="1-1-线性方程组"><a href="#1-1-线性方程组" class="headerlink" title="1.1 线性方程组"></a>1.1 线性方程组</h1><h2 id="等价方程组"><a href="#等价方程组" class="headerlink" title="等价方程组"></a>等价方程组</h2><ul>
+<li>定义：若两个含有相同变量的方程组具有相同的解集，则称它们是等价的</li>
+<li>判定:<br>1) 交换任意两个方程的顺序<br>2) 任一方程两边同乘一个非零的实数<br>3) 任一方程的倍数加到另外一个方程上</li>
+</ul>
+<h2 id="n-X-n方程组"><a href="#n-X-n方程组" class="headerlink" title="n X n方程组"></a>n X n方程组</h2><ul>
+<li>定义：若方程组中，第k个方程的前k-1个变量的系数均为零，且$ x_{k}(k=1, \cdot \cdot \cdot ), n) $的系数不为零，则称该方程组为严格三角形的</li>
+</ul>
+<h2 id="初等行运算"><a href="#初等行运算" class="headerlink" title="初等行运算"></a>初等行运算</h2><ul>
+<li>I.交换两行 </li>
+<li>II.以非零实数乘以某行</li>
+<li>III.将某行替换为它与其它行的倍数的和</li>
+</ul>
+<h2 id="练习总结："><a href="#练习总结：" class="headerlink" title="练习总结："></a>练习总结：</h2><ul>
+<li>nXn矩阵的线性方程组可以化简为严格三角形式，则它将有一个唯一解</li>
+</ul>
+<h1 id="1-2-行阶梯形"><a href="#1-2-行阶梯形" class="headerlink" title="1.2 行阶梯形"></a>1.2 行阶梯形</h1><h2 id="行阶梯形矩阵"><a href="#行阶梯形矩阵" class="headerlink" title="行阶梯形矩阵"></a>行阶梯形矩阵</h2><ul>
+<li>定义：若一个矩阵满足以下条件，则称其为行阶梯形矩阵<br>1) 每一非零行中的第一个非零元为1<br>2) 第k行的元不全为零时，第k+1行首变量之前零的个数多于第k行首变量之前零的个数<br>3) 所有元素均为零的行必在不全为零的行之后</li>
+</ul>
+<h2 id="高斯消元法"><a href="#高斯消元法" class="headerlink" title="高斯消元法"></a>高斯消元法</h2><ul>
+<li>定义：利用行运算I，II和III，将线性方程组的增广矩阵化为行阶梯形的过程称为高斯消元法</li>
+</ul>
+<h2 id="超定方程组"><a href="#超定方程组" class="headerlink" title="超定方程组"></a>超定方程组</h2><ul>
+<li>定义：若一个线性方程组中方程的个数多于未知量的个数，则称其为超定的，超定方程组通常是(但不总是)不相容的</li>
+</ul>
+<h2 id="亚定方程组"><a href="#亚定方程组" class="headerlink" title="亚定方程组"></a>亚定方程组</h2><ul>
+<li>定义：一个有n个未知量m个线性方程的方程组称为亚定的</li>
+</ul>
+<h2 id="行最简形"><a href="#行最简形" class="headerlink" title="行最简形"></a>行最简形</h2><ul>
+<li>定义：若一个矩阵满足以下条件，则称该矩阵为行最简形<br>1) 矩阵是行阶梯形的<br>2) 每一行的第一个非零元是该列唯一的非零元</li>
+</ul>
+<h2 id="齐次方程组"><a href="#齐次方程组" class="headerlink" title="齐次方程组"></a>齐次方程组</h2><ul>
+<li>定义：如果线性方程组的右端项全为零，则称其为齐次的</li>
+<li>定理：若n&gt;m，则mXn的齐次线性方程组有非平凡解</li>
+</ul>
+<h1 id="1-3矩阵算术"><a href="#1-3矩阵算术" class="headerlink" title="1.3矩阵算术"></a>1.3矩阵算术</h1><h2 id="矩阵记号"><a href="#矩阵记号" class="headerlink" title="矩阵记号"></a>矩阵记号</h2><blockquote>
+<p>$ A=(a_{ij}) $</p>
+</blockquote>
+<h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><h2 id="相等"><a href="#相等" class="headerlink" title="相等"></a>相等</h2><ul>
+<li>定义: 若两个mXn矩阵A和B对任一i和j均满足$ a_{ij}=b_{ij} $,则称它们相等</li>
+</ul>
+<h2 id="标量乘法"><a href="#标量乘法" class="headerlink" title="标量乘法"></a>标量乘法</h2><ul>
+<li>定义：设A为mXn的矩阵，且α为一标量，且αA为一mXn的矩阵，其(i，j)元素$ αa_{ij} $</li>
+</ul>
+<h2 id="矩阵加法"><a href="#矩阵加法" class="headerlink" title="矩阵加法"></a>矩阵加法</h2><ul>
+<li>定义：设$ A=a_{ij} $及$ B=b_{ij} $都是mXn矩阵，则它们的和A+B也为一个mxn的矩阵，对每一个有序对(i,j)，它的(i,j)元素为$ a_{ij}+b_{ij} $</li>
+</ul>
+<h2 id="矩阵乘法及线性方程组"><a href="#矩阵乘法及线性方程组" class="headerlink" title="矩阵乘法及线性方程组"></a>矩阵乘法及线性方程组</h2><ul>
+<li>定义：若$ a_{1},a_{2},\cdot \cdot \cdot,a_{n} $为R^{m}中的向量，且$ c_{1},c_{2},\cdot \cdot \cdot,c_{n} $为标量，则和式$ a_{1}c_{1}+a_{2}c_{2}+\cdot \cdot \cdot+a_{n}c_{n} $称为向量$ a_{1},a_{2},\cdot \cdot \cdot ),a_{n} $的一个线性组合</li>
+<li>定理：（线性方程组的相容性定理）一个线性方程组Ax=b相容的充要条件式向量b可写为矩阵A列向量的一个线性组合</li>
+</ul>
+<h2 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h2><ul>
+<li>定义：若$ A=a_{ij} $为一个mXn的矩阵，且$ B=b_{ij} $为一个nXr的矩阵，则乘积$AB=C=(c_{ij}) $为一个mXr的矩阵，它的元素定义为$ c_{ij}=\vec{a_{i}}b_{j}=\sum_{k=1}^{n} a_{ik}b_{kj} $</li>
+</ul>
+<h2 id="符号规则"><a href="#符号规则" class="headerlink" title="符号规则"></a>符号规则</h2><h2 id="矩阵的转置"><a href="#矩阵的转置" class="headerlink" title="矩阵的转置"></a>矩阵的转置</h2><ul>
+<li>定义：一个mXn矩阵A的转置为nXm矩阵B，定义为$ b_{ji}=a_{ij} $</li>
+<li>A的转置记为$ A^{T} $</li>
+<li>定义：一个nXn和矩阵A，若满足$ A^{T}=A $，则称为对称的</li>
+</ul>
+<h1 id="1-4矩阵代数"><a href="#1-4矩阵代数" class="headerlink" title="1.4矩阵代数"></a>1.4矩阵代数</h1><h2 id="代数法制"><a href="#代数法制" class="headerlink" title="代数法制"></a>代数法制</h2><ul>
+<li>定理：在定义了需要的运算后，下述法则对任何标量α和β及矩阵A，B和C都成立<br>1) A+B=B+A<br>2) (A+B)+C=A+(B+C)<br>3) (AB)C=A(BC)<br>4) A(B+C)=AB+BC<br>5) (A+B)C=AC+BC<br>6) (αβ)A=α(βA)<br>7) α(AB)=(αA)B=A(αB)<br>8) (α+β)A=αA+βA<br>9) α(A+B)=αA+αB</li>
+</ul>
+<h2 id="单位矩阵"><a href="#单位矩阵" class="headerlink" title="单位矩阵"></a>单位矩阵</h2><ul>
+<li>定义：nXn的单位矩阵为矩阵$ I=(\delta_{ij}) $,其中 </li>
+</ul>
+<p>$$ \delta_{ij}=\left \{<br>\begin{array}{c}<br>1 &amp; 当i=j时 \\<br>0 &amp; 当i \neq j 时<br>\end{array}\right. $$</p>
+<h2 id="矩阵的逆"><a href="#矩阵的逆" class="headerlink" title="矩阵的逆"></a>矩阵的逆</h2><ul>
+<li>定义：若存在一个矩阵B使得AB=BA=I，则称nXn矩阵A为非奇异的或可逆的，矩阵B称为A的乘法逆元</li>
+<li>定义：一个nXn矩阵若不存在乘法逆元，则称为奇异的</li>
+<li>定理：若A和B为非奇异的nXn矩阵，则AB也为非奇异，且$ (AB)^{-1} = B^{-1}A^{-1} $</li>
+</ul>
+<h2 id="转置的代数法则"><a href="#转置的代数法则" class="headerlink" title="转置的代数法则"></a>转置的代数法则</h2><p>1) $(A^{T})^{T}=A $<br>2) $(αA)^{T}=αA^{T} $<br>3) $(A+B)^{T}=A^{T}+B^{T} $<br>4) $(AB)^{T}=B^{T}A^{T} $</p>
+<h2 id="对称矩阵和网络"><a href="#对称矩阵和网络" class="headerlink" title="对称矩阵和网络"></a>对称矩阵和网络</h2><ul>
+<li>定理：设A为某图的nXn邻接矩阵，且$ a_{ij}^{(k)} $表示$ A^k $的(i，j)元素，则$ a_{ij}^{(k)} $等于顶点$V_i$和$V_j$间长度为k的路的条数</li>
+</ul>
+<h1 id="1-5初等矩阵"><a href="#1-5初等矩阵" class="headerlink" title="1.5初等矩阵"></a>1.5初等矩阵</h1><h2 id="等价方程组-1"><a href="#等价方程组-1" class="headerlink" title="等价方程组"></a>等价方程组</h2><h2 id="初等矩阵"><a href="#初等矩阵" class="headerlink" title="初等矩阵"></a>初等矩阵</h2><ul>
+<li>如果从单位矩阵I开始，只进行一次初等运算，得到的矩阵称为初等矩阵</li>
+<li>定理：若E为一初等矩阵，则E是非奇异的，且$ E^-1 $为一与它同类型的初等矩阵</li>
+<li>定义：若存在一个有限初等矩阵的序列$ E_{1},E_{2},E_{3},\cdot \cdot \cdot,E_{k} $使得$ B=E_{k}E_{k-1}\cdot \cdot \cdot E_{1}A $则称A与B为行等价的</li>
+<li>定理：(非奇异矩阵的等价条件) 令A为一nXn矩阵，则下列命题是等价的：<br>1) A是非奇异的<br>2) Ax=0仅有平凡解0<br>3) A与I行等价</li>
+<li>推论：当且仅当A非奇异时，n个未知量n个方程的线性方程组Ax=b有唯一解</li>
+</ul>
+<h2 id="对角矩阵和三角形矩阵"><a href="#对角矩阵和三角形矩阵" class="headerlink" title="对角矩阵和三角形矩阵"></a>对角矩阵和三角形矩阵</h2><h1 id="1-6分块矩阵"><a href="#1-6分块矩阵" class="headerlink" title="1.6分块矩阵"></a>1.6分块矩阵</h1><h2 id="分块乘法"><a href="#分块乘法" class="headerlink" title="分块乘法"></a>分块乘法</h2><h2 id="外积展开"><a href="#外积展开" class="headerlink" title="外积展开"></a>外积展开</h2>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E8%A1%8C%E5%88%97%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    第二章 行列式
+                
+            </div>
+        </a>
+    
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Maktub_小明 &copy; 2021 
+            <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="/images/cc-by-nc-sa.svg" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten" target="_blank" rel="noopener">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
